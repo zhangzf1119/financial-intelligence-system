@@ -1,0 +1,32 @@
+# Maven
+target/
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.*
+
+# Spring Boot sensitive config
+application-local.yml
+application-local.yaml
+application-local.properties
+
+# Temporary files
+*.tmp
+*.swp

@@ -1,0 +1,49 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  application:
+    name: financial-intelligence-system
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/financial_ai}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:123456}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 3s
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+app:
+  jwt-secret: ${JWT_SECRET:change-this-very-long-secret-before-production-2026}
+  jwt-expiration-hours: ${JWT_EXPIRATION_HOURS:12}
+  preview:
+    libreoffice-command: ${LIBREOFFICE_COMMAND:soffice}
+    timeout-seconds: ${OFFICE_PREVIEW_TIMEOUT_SECONDS:60}
+  ai:
+    base-url: ${AI_BASE_URL:https://api.openai.com/v1}
+    api-key: ${AI_API_KEY:}
+    chat-model: ${AI_CHAT_MODEL:gpt-4.1-mini}
+    embedding-model: ${AI_EMBEDDING_MODEL:text-embedding-3-small}
+    embedding-dimensions: ${AI_EMBEDDING_DIMENSIONS:1536}
+logging:
+  level:
+    com.rpa: INFO
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    display-request-duration: true
+  api-docs:
+    path: /v3/api-docs
+flowable:
+  database-schema-update: true
+  async-executor-activate: false
+  history-level: audit
